@@ -43,6 +43,11 @@ public class MainController {
 	public String myshop() {
 		return "myshop";
 	}
+	/** 주문완료페이지 **/
+	@RequestMapping(value="/order_ok.do", method=RequestMethod.GET)
+	public String order_ok() {
+		return "order_ok";
+	}
 
 	
 	

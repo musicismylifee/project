@@ -33,6 +33,8 @@
 	
 	.top_logo { display:flex; justify-content: center; align-items:center; height: 120px; flex-basis:0,0, 1; margin-left:55px;}
 	.top_logo a{ /* border:1px solid red; */  text-align: center; }
+	
+	.memver_menu img {width:30px;}
 
  	
  	.logo_line {width:70%; display:flex; justify-content: space-between; align-items: center;}
@@ -132,7 +134,7 @@
 				<div class="logo_line">
 				<!-- 메인 로고 -->
 					<div class="logo">
-						<a href="http://localhost:9000/myshop/myshop.do"><img src="http://localhost:9000/myshop/resources/images/logo.png" style="max-height:60px;" alt="My_shop"></a>
+						<a href="http://localhost:9000/myshop/myshop.do"><img src="http://localhost:9000/myshop/resources/images/logo.png" style="max-height:40px;" alt="My_shop"></a>
 					</div>
 					<!-- 검색창 -->
 					<div class="search">
@@ -348,11 +350,9 @@
 				</li>	
 				<li class="item">
 					<div class="item_name">매거진</div>
-						
-					</div>
-				</li>	
+				</li>
 			</ul>
-	 </div>
+					</div>
 </header>
 <script>
 //Hide Header on on scroll down
