@@ -195,6 +195,22 @@ table.calculation td {
 }
 </style>
 
+<script>
+$("#allCheck").click(function(){
+   var chk = $("#allCheck").prop("checked");
+   if(chk) {
+    $(".chBox").prop("checked", true);
+   } else {
+    $(".chBox").prop("checked", false);
+   }
+});
+
+$(".chBox").click(function(){
+ $("#allCheck").prop("checked", false);
+});
+
+</script>
+
 </head>
 <body>
 	<!-- header  -->
@@ -212,7 +228,7 @@ table.calculation td {
             <form>
                 <thead>
                     <tr>
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox" name="allCheck" id="allCheck"></td>
                         <td colspan="2">상품정보</td>
                         <td>옵션</td>
                         <td>상품금액</td>
@@ -225,7 +241,7 @@ table.calculation td {
                 
                 
                     <tr class="cart__list__detail">
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox" name="chBox" id="chBox"></td>
                         <td>
                         	<a href="#"><img src="http://localhost:9000/myshop/resources/upload/${vo.psfile }" alt="이미지"></a>
                         </td>

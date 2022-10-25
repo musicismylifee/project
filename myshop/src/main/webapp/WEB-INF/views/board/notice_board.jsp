@@ -14,7 +14,7 @@
 <style>
 
 body { padding: 50px; display: flex; justify-content: center; align-items: center;}
-form {position: relative;  width: 982px;}
+form {position: relative;  /* width: 982px; */}
 table { border-collapse: collapse; }
 th {border-top:1px solid gray; border-bottom:1px solid gray;padding:10px; padding:10px;}
 td {padding:15px; font-size: .9rem; color: #222; text-align: center; border-bottom:1px solid lightgray;}

@@ -170,7 +170,7 @@
 					<ul>
 						<li><a href="https://www.sketch1993b2b.com" target="_blank"><img src="http://localhost:9000/myshop/resources/images/sketch.png" height="20px" alt="blog"></a></li>
 	            		<li><a href="https://blog.naver.com/sketch1993" target="_blank"><img src="http://localhost:9000/myshop/resources/images/blog.png" height="20px" alt="blog"></a></li>
-	            		<li><a href="https://www.instagram.com/sketch1993_official/" target="_blank"><img src="http://localhost:9000/myshop/resources/images/insta.png" height="20px" alt="instagram"></a></li>
+	            		<li><a href="https://www.instagram.com/sketch1993_official/" target="_blank"><img src="http://localhost:9000/myshop/resources/images/instagram.png" height="20px" alt="instagram"></a></li>
 					</ul>
 				</div>
 			</div>
