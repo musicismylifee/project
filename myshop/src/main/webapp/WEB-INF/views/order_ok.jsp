@@ -45,6 +45,9 @@
 </style>
 </head>
 <body>
+	<!-- header  -->
+	<jsp:include page="/header.do"></jsp:include>
+	
 	<div class="top">
 		<div>
 			<a>01장바구니</a>

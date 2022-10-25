@@ -183,6 +183,7 @@ public class ProductController {
 		MyshopProductVO vo = productService.getDetail(pid);
 
 		mv.addObject("vo", vo);
+		mv.addObject("pid",pid);
 		mv.setViewName("/product/product_detail");
 
 		return mv;

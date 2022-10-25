@@ -8,8 +8,8 @@
 	<!-- 관리자 상품등록 -->
 	<insert parameterType="com.myshop.vo.MyshopProductVO" id="insert">
 		insert into myshop_product values(
-		sequ_shop_product.nextval,#{category_id}, #{pname}, #{brand}, #{quantity}, #{price}, #{delivery_price},sysdate,sysdate,
-		 #{rating}, #{pdetail}, #{pfile}, #{psfile},#{psize}) 
+      sequ_shop_product.nextval,#{category_id}, #{pname}, #{brand},#{psize}, #{quantity}, #{price}, #{delivery_price},sysdate,sysdate,
+       #{rating}, #{pdetail}, #{pfile}, #{psfile}) 
 	</insert>
 	<!-- 상품목록 전체리스트 -->
 	<select parameterType="map" id="list" resultType="com.myshop.vo.MyshopProductVO">

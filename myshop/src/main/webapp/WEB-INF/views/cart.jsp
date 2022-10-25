@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>장바구니</title>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
 body {
   margin: 0;
@@ -191,10 +194,11 @@ table.calculation td {
 	font-weight:bold;
 }
 </style>
+
 </head>
 <body>
-	<!-- header -->
-	<%@ include file="header.jsp" %>
+	<!-- header  -->
+	<jsp:include page="/header.do"></jsp:include>
 	
     <section class="cart">
         <div class="cart__information">
@@ -217,29 +221,37 @@ table.calculation td {
                     </tr>
                 </thead>
                 <tbody>
+                <c:forEach var="vo" items="${list}">
+                
+                
                     <tr class="cart__list__detail">
                         <td><input type="checkbox"></td>
                         <td>
-                        	<a href="#"><img src="http://localhost:9000/myshop/resources/images/good1.jpg" alt="제품영"></a>
+                        	<a href="#"><img src="http://localhost:9000/myshop/resources/upload/${vo.psfile }" alt="이미지"></a>
                         </td>
-                        <td><a href="#">sketch</a>
-                            <p>NYGÅRDSANNA 오가닉 데님 랩스커트</p>
-                            <span class="price">380,000원</span>
-                            <span style="text-decoration: line-through; color: lightgray;">480,000</span>
+                        <td><a href="#">${vo.brand}</a>
+                            <p>${vo.pname}</p>
+                            <span class="price"><fmt:formatNumber value="${vo.price}" type="number"/>원</span>
                         </td>
                         <td class="cart__list__option">
-                            <p>상품 주문 수량: 1개</p>
+                            <p>상품 주문 수량: ${vo.amt}개</p>
                             <button class="cart__list__optionbtn">주문조건 추가/변경</button>
                         </td>
-                        <td><span class="price">380,000원</span><br>
+                        <td><span class="price"><fmt:formatNumber value="${vo.price*vo.amt}" type="number"/>원</span><br>
                             <button class="cart__list__orderbtn">주문하기</button>
                         </td>
                         <td>
                         	<span>0원</span>
                         </td>
-                        <td>무료</td>
+                        <td><fmt:formatNumber value="${vo.delivery_price}" type="number"/>원</td>
                     </tr>
-                    <tr class="cart__list__detail">
+                    <c:set var="total"  value="${total+vo.price*vo.amt}"/>
+                    <c:set var="delivery"  value="${delivery+vo.delivery_price}"/>
+                    <%-- <c:set var="discount"  value=""/> --%>
+                    </c:forEach>
+                    <c:set var="payment"  value="${payment+total+delivery}"/>
+                 
+                    <!-- <tr class="cart__list__detail">
                         <td style="width: 2%;"><input type="checkbox"></td>
                         <td style="width: 13%;"> 
                         	<a href="#"><img src="http://localhost:9000/myshop/resources/images/good2.jpg" alt="제품영"></a>
@@ -259,7 +271,7 @@ table.calculation td {
                         	<span>0원</span>
                         </td>
                         <td style="width: 7%;">무료</td>
-                    </tr>
+                    </tr> -->
                 </tbody>
                 <tfoot>
                     <tr>
@@ -283,10 +295,10 @@ table.calculation td {
         	</tr>
         	
         	<tr style="backgrond-color:#fff;">
-        		<td style="padding:22px 0;"><span class="c_price">0</span>원</td>
+        		<td style="padding:22px 0;"><span class="c_price"><fmt:formatNumber value="${total}" type="number"/></span>원</td>
+        		<td><span class="c_price"><fmt:formatNumber value="${delivery}" type="number"/></span>원</td>
         		<td><span class="c_price">0</span>원</td>
-        		<td><span class="c_price">0</span>원</td>
-        		<td><span class="c_price">0</span>원</td>
+        		<td><span class="c_price"><fmt:formatNumber value="${payment}" type="number"/></span>원</td>
         	</tr>
         </table>
         <br>

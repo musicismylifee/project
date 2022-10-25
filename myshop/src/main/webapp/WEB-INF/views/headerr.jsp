@@ -14,11 +14,11 @@
 	<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 	
 <style>
-	body {padding-top:278px; margin:0;font-family: "Noto Sans KR";}
-	header {position:fixed;width:100%; height: 230px; padding:0; top:0; transition: top 0.2s ease-in-out;  z-index:10;  background-color:white; }
+	body {padding-top:245px; margin:0;font-family: "Noto Sans KR";}
+	header {position:fixed;width:100%; height: 230px; padding:0; top:0; transition: top 0.2s ease-in-out; z-index:300; background-color:white;}
 	.header_util { width:100%; line-height:40px; height:40px; margin:auto; background-color:#fafafa; font-size:12px; }
 	
-	.nav-up { top: -280px;}
+	.nav-up { top: -247px;}
 
 	
 	.util_left_menu ul, .memvership ul { margin:3px 0 0 0; } 
@@ -33,6 +33,8 @@
 	
 	.top_logo { display:flex; justify-content: center; align-items:center; height: 120px; flex-basis:0,0, 1; margin-left:55px;}
 	.top_logo a{ /* border:1px solid red; */  text-align: center; }
+	
+	.memver_menu img {width:30px;}
 
  	
  	.logo_line {width:70%; display:flex; justify-content: space-between; align-items: center;}
@@ -91,7 +93,7 @@
 							<li>
 							<a href="http://localhost:9000/myshop/qna_board.do">Q&amp;A</a> </li>
 							<li>
-							<a href="http://localhost:9000/myshop/review.do">REVIEW</a> </li>
+							<a href="http://localhost:9000/myshop/review_list.do">REVIEW</a> </li>
 						</ul>
 					</div>
 				</div>
@@ -115,12 +117,12 @@
 					<!-- 우측 멤버쉽 메뉴 -->
 					<div class="memvership">
 						<ul>
-							<c:if test="${sessionScope.svo.id == 'admin' }">
-								<li><a href="http://localhost:9000/myshop/admin.do" target="_blank">Admin</a></li>
-							</c:if>
-							<li><a href="http://localhost:9000/myshop/logout.do" class="log">LOGOUT</a></li>
+							
+							<li><a href="http://localhost:9000/myshop/login.do" class="log">LOGOUT</a></li>
 					    	<li><a href="http://localhost:9000/myshop/membership_benefit.do">MEMBERSHIP</a></li>
 					    	<!-- <li><a href="#">CART (<span class="Basket-count">0</span>)</a></li> -->
+					    	<li><a href="http://localhost:9000/myshop/join.do">JOIN</a></li>
+							<li><a href="http://localhost:9000/myshop/admin.do" target="_blank">Admin</a></li>
 						</ul>
 					</div>
 				</div>
@@ -132,7 +134,7 @@
 				<div class="logo_line">
 				<!-- 메인 로고 -->
 					<div class="logo">
-						<a href="http://localhost:9000/myshop/myshop.do"><img src="http://localhost:9000/myshop/resources/images/logo.png" style="max-height:60px;" alt="My_shop"></a>
+						<a href="http://localhost:9000/myshop/myshop.do"><img src="http://localhost:9000/myshop/resources/images/logo.png" style="max-height:40px;" alt="My_shop"></a>
 					</div>
 					<!-- 검색창 -->
 					<div class="search">
@@ -145,15 +147,15 @@
 					</div>
 	        		<div class="memver_menu">
 	        		<!-- 마이페이지 장바구니 배송조회 -->
-	        			<dl onclick="window.location.href='http://localhost:9000/myshop/mypage_order.do?';">
+	        			<dl onclick="window.location.href='#';">
 	        				<dt class="icon"><img src="http://localhost:9000/myshop/resources/images/mypage.png"></dt>
 	        				<dd class="text">마이페이지</dd>
 	        			</dl>
-	        			<dl onclick="window.location.href='http://localhost:9000/myshop/mypage_order.do?id=${sessionScope.svo.id}';" style=margin-top:14px;>
+	        			<dl onclick="window.location.href='#';" style=margin-top:14px;>
 	        				<dt class="icon"><img src="http://localhost:9000/myshop/resources/images/order.png"></dt>
 	        				<dd class="text">주문/배송조회</dd>
 	        			</dl>
-	        			<dl onclick="window.location.href='http://localhost:9000/myshop/cart.do?id=${sessionScope.svo.id}';">
+	        			<dl onclick="window.location.href='http://localhost:9000/myshop/cart.do';">
 	        				<dt class="icon"><img src="http://localhost:9000/myshop/resources/images/cart.png"></dt>
 	        				<dd class="text">장바구니</dd>
 	        			</dl>
@@ -179,7 +181,7 @@
 									<li>
 									<h4><a href="product_list.do?group_id=w&category_id=6" id="category_id">슈즈</a></h4>
 									<p class="sub_line"></p>
-									<c:forEach items="${cate1}" var="cate" begin="11" end="17">
+									<c:forEach items="${cate1}" var="cate" begin="12" end="18">
 									<ul>
 									  <li><a href="product_list.do?group_id=w&category_id=${cate.category_id}" id="category_id" >${cate.category_nm}</a></li>
 									</ul>
@@ -188,7 +190,7 @@
 								<li>
 									<h4><a href="product_list.do?group_id=w&category_id=7">가방</a></h4>
 									<p class="sub_line"></p>
-									<c:forEach items="${cate1}" var="cate" begin="19" end="26">
+									<c:forEach items="${cate1}" var="cate" begin="20" end="27">
 									<ul>
 									  <li><a href="product_list.do?group_id=w&category_id=${cate.category_id}" >${cate.category_nm}</a></li>
 									</ul>
@@ -197,7 +199,7 @@
 								<li>
 									<h4><a href="product_list.do?group_id=w&category_id=8">액세서리</a></h4>
 									<p class="sub_line"></p>
-									<c:forEach items="${cate1}" var="cate" begin="28" end="39">
+									<c:forEach items="${cate1}" var="cate" begin="29" end="38">
 									<ul>
 									  <li><a href="product_list.do?group_id=w&category_id=${cate.category_id}" >${cate.category_nm}</a></li>
 									</ul>
@@ -215,7 +217,7 @@
 								<li>
 									<h4><a href="product_list.do?group_id=m&category_id=9">의류</a></h4>
 									<p class="sub_line"></p>
-									<c:forEach items="${cate2}" var="cate" begin="1" end="8">
+									<c:forEach items="${cate2}" var="cate" begin="2" end="8">
 									<ul>
 									  <li><a href="product_list.do?group_id=m&category_id=${cate.category_id}" >${cate.category_nm}</a></li>
 									</ul>
@@ -260,7 +262,7 @@
 								<li>
 									<h4><a href="product_list.do?group_id=k&category_id=13">의류</a></h4>
 									<p class="sub_line"></p>
-									<c:forEach items="${cate3}" var="cate" begin="1" end="9">
+									<c:forEach items="${cate3}" var="cate" begin="2" end="9">
 									<ul>
 									  <li><a href="product_list.do?group_id=k&category_id=${cate.category_id}" >${cate.category_nm}</a></li>
 									</ul>
@@ -305,16 +307,16 @@
 								<li>
 									<h4><a href="product_list.do?group_id=l&category_id=17">의류</a></h4>
 									<p class="sub_line"></p>
-									<c:forEach items="${cate4}" var="cate" begin="1" end="7">
+									<c:forEach items="${cate4}" var="cate" begin="2" end="8">
 									<ul>
 									  <li><a href="product_list.do?group_id=l&category_id=${cate.category_id}" >${cate.category_nm}</a></li>
 									</ul>
 									</c:forEach>
 								</li>
 								<li>
-									<h4><a href="product_list.do?group_id=l&category_id=18">테크</a></h4>
+									<h4><a href="product_list.do?group_id=l&category_id=18">슈즈</a></h4>
 									<p class="sub_line"></p>
-									<c:forEach items="${cate4}" var="cate" begin="10" end="17">
+									<c:forEach items="${cate4}" var="cate" begin="10" end="16">
 									<ul>
 									  <li><a href="product_list.do?group_id=l&category_id=${cate.category_id}" >${cate.category_nm}</a></li>
 									</ul>
@@ -348,11 +350,9 @@
 				</li>	
 				<li class="item">
 					<div class="item_name">매거진</div>
-						
-					</div>
-				</li>	
+				</li>
 			</ul>
-	 </div>
+					</div>
 </header>
 <script>
 //Hide Header on on scroll down
