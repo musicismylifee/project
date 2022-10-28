@@ -193,22 +193,24 @@ table.calculation td {
 	font-size:20pt;
 	font-weight:bold;
 }
+
+.checkBox { float:left; width:30px; }
+input { width:16px; height:16px; color:black;}
 </style>
 
 <script>
-$("#allCheck").click(function(){
-   var chk = $("#allCheck").prop("checked");
-   if(chk) {
-    $(".chBox").prop("checked", true);
-   } else {
-    $(".chBox").prop("checked", false);
-   }
-});
-
-$(".chBox").click(function(){
- $("#allCheck").prop("checked", false);
-});
-
+	$("#allCheck").click(function(){
+	   var chk = $("#allCheck").prop("checked");
+	   if(chk) {
+	    $(".chBox").prop("checked", true);
+	   } else {
+	    $(".chBox").prop("checked", false);
+	   }
+	});
+	
+	$(".chBox").click(function(){
+	 $("#allCheck").prop("checked", false);
+	});
 </script>
 
 </head>
@@ -229,6 +231,7 @@ $(".chBox").click(function(){
                 <thead>
                     <tr>
                         <td><input type="checkbox" name="allCheck" id="allCheck"></td>
+	
                         <td colspan="2">상품정보</td>
                         <td>옵션</td>
                         <td>상품금액</td>
@@ -236,12 +239,22 @@ $(".chBox").click(function(){
                         <td>배송비</td>
                     </tr>
                 </thead>
+                        <script>
+                    	$("#allCheck").click(function(){
+                    	   var chk = $("#allCheck").prop("checked");
+                    	   if(chk) {
+                    	    $(".chBox").prop("checked", true);
+                    	   } else {
+                    	    $(".chBox").prop("checked", false);
+                    	   }
+                    	});
+                        </script>
                 <tbody>
                 <c:forEach var="vo" items="${list}">
                 
                 
                     <tr class="cart__list__detail">
-                        <td><input type="checkbox" name="chBox" id="chBox"></td>
+                        <td><input type="checkbox" name="chBox" class="chBox" data-cartNum="${vo.bid }"></td>
                         <td>
                         	<a href="#"><img src="http://localhost:9000/myshop/resources/upload/${vo.psfile }" alt="이미지"></a>
                         </td>
@@ -251,7 +264,7 @@ $(".chBox").click(function(){
                         </td>
                         <td class="cart__list__option">
                             <p>상품 주문 수량: ${vo.amt}개</p>
-                            <button class="cart__list__optionbtn">주문조건 추가/변경</button>
+                            <button type="button" class="cart__list__optionbtn" data-cartNum="${vo.bid }">삭제</button>
                         </td>
                         <td><span class="price"><fmt:formatNumber value="${vo.price*vo.amt}" type="number"/>원</span><br>
                             <button class="cart__list__orderbtn">주문하기</button>
@@ -261,6 +274,11 @@ $(".chBox").click(function(){
                         </td>
                         <td><fmt:formatNumber value="${vo.delivery_price}" type="number"/>원</td>
                     </tr>
+                        <script>
+                        $(".chBox").click(function(){
+                       	 $("#allCheck").prop("checked", false);
+                       	});
+                        </script>
                     <c:set var="total"  value="${total+vo.price*vo.amt}"/>
                     <c:set var="delivery"  value="${delivery+vo.delivery_price}"/>
                     <%-- <c:set var="discount"  value=""/> --%>
@@ -291,9 +309,31 @@ $(".chBox").click(function(){
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="3"><input type="checkbox"> 
-                        	<button class="cart__list__optionbtn">선택상품 삭제</button>
+                        <td colspan="3">
+                        	<button class="cart__list__optionbtn" type="button" class="selectDelete_btn">선택상품 삭제</button>
                             <button class="cart__list__optionbtn">선택상품 찜</button>
+                        <script>
+						 $(".selectDelete_btn").click(function(){
+						  var confirm_val = confirm("정말 삭제하시겠습니까?");
+						  
+						  if(confirm_val) {
+						   var checkArr = new Array();
+						   
+						   $("input[class='chBox']:checked").each(function(){
+						    checkArr.push($(this).attr("data-cartNum"));
+						   });
+						    
+						   $.ajax({
+						    url : "/shop/deleteCart",
+						    type : "post",
+						    data : { chbox : checkArr },
+						    success : function(){
+						     location.href = "/shop/cartList";
+						    }
+						   });
+						  } 
+						 });
+						</script>
                         </td>
                         <td></td>
                         <td></td>
@@ -321,7 +361,7 @@ $(".chBox").click(function(){
         <br>
         <div class="cart__mainbtns">
             <button class="cart__bigorderbtn left">쇼핑 계속하기</button>
-            <button class="cart__bigorderbtn right">주문하기</button>
+            <a href="http://localhost:9000/myshop/order_ok.do"><button class="cart__bigorderbtn right">주문하기</button></a>
         </div>
     </section>
     

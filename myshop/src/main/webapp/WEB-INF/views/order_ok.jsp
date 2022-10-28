@@ -7,7 +7,7 @@
 <title>주문완료페이지</title>
 
 <style>
-	body {width:97%;}
+	body {width:90%;}
 	.top {display:flex; justify-content: right; /* float:right; */ padding-top:20px; padding-bottom:20px; border-bottom:3px solid lightgrey;}
 	.top a{font-size:35px;opacity: 0.5; font-weight:bold;}
 	.top a:last-child{font-size:35px;opacity: 1;}

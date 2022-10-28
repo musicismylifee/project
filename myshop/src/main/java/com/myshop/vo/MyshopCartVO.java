@@ -1,7 +1,13 @@
 package com.myshop.vo;
 
 public class MyshopCartVO {
-	int pid,amt,price,delivery_price;
+	int bid,pid,amt,price,delivery_price;
+	public int getBid() {
+		return bid;
+	}
+	public void setBid(int bid) {
+		this.bid = bid;
+	}
 	public int getPrice() {
 		return price;
 	}

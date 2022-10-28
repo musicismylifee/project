@@ -20,7 +20,11 @@ public class MainController {
 	@Autowired 
 	ProductService productService;		
 
-
+	// 장바구니 
+	@RequestMapping(value="/cart.do", method=RequestMethod.GET)
+	public String cart() {
+		return "cart";
+	}
 	//회원 - 공통 헤더 
 	@RequestMapping(value="/header.do", method=RequestMethod.GET)
 	public String header(Model model) {
@@ -36,15 +40,12 @@ public class MainController {
 	
 	/** 메인페이지 **/
 	@RequestMapping(value="/myshop.do", method=RequestMethod.GET)
-	public String myshop() {
+	public String myshop() {	
 		return "myshop";
 	}
-	/** 주문완료페이지 **/
-	@RequestMapping(value="/order_ok.do", method=RequestMethod.GET)
-	public String order_ok() {
-		return "order_ok";
-	}
+	
 
+	
 	
 	
 	
@@ -54,11 +55,6 @@ public class MainController {
 		return "membership_benefit";
 	}
 	
-	//공지사항 페이지
-	@RequestMapping(value="/notice_board.do", method=RequestMethod.GET)
-	public String notice_board() {
-		return "/board/notice_board";
-	}
 	
 	/**
 	 * footer.do
@@ -66,6 +62,7 @@ public class MainController {
 	@RequestMapping(value="/footer.do", method=RequestMethod.GET)
 	public String footer() {
 		return "footer";
+		
 	}
 	
 
